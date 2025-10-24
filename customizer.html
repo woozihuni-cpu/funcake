@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Customizer - FunCake</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        background-color: #faf8f3;
+      }
+
+      .content-wrapper {
+        flex: 1 0 auto;
+      }
+
+      footer {
+        flex-shrink: 0;
+      }
+
+      nav {
+        background: linear-gradient(135deg, #d4a574 0%, #c88e5c 100%);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .nav-link {
+        color: white;
+        border-radius: 5px;
+        border: 2px solid transparent;
+        font-weight: 500;
+        position: relative;
+      }
+
+      .nav-link:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        border-color: rgba(255, 255, 255, 0.3);
+        color: white;
+      }
+
+      .nav-link.active {
+        background-color: rgba(255, 255, 255, 0.3);
+      }
+
+      .cart-badge {
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        background: #dc3545;
+        color: white;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.7rem;
+        font-weight: bold;
+      }
+
+      /* Page Header */
+      .page-header {
+        background: linear-gradient(135deg, #d4a574 0%, #c88e5c 100%);
+        padding: 80px 0 60px;
+        text-align: center;
+        color: white;
+        margin-bottom: 60px;
+      }
+
+      .page-header h1 {
+        font-size: 3rem;
+        font-weight: bold;
+        margin-bottom: 15px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      .page-header p {
+        font-size: 1.2rem;
+        opacity: 0.95;
+      }
+
+      /* Customizer Section */
+      .customizer-section {
+        padding: 40px 0 80px;
+      }
+
+      .customizer-container {
+        display: grid;
+        grid-template-columns: 1fr 400px;
+        gap: 40px;
+      }
+
+      /* Customization Options */
+      .options-container {
+        background: white;
+        border-radius: 15px;
+        padding: 40px;
+        box-shadow: 0 5px 20px rgba(139, 90, 60, 0.1);
+      }
+
+      .option-section {
+        margin-bottom: 40px;
+      }
+
+      .option-section:last-child {
+        margin-bottom: 0;
+      }
+
+      .option-title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #8b5a3c;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #d4a574;
+      }
+
+      .option-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 15px;
+      }
+
+      .option-card {
+        position: relative;
+        border: 3px solid #e8dcc8;
+        border-radius: 12px;
+        padding: 15px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        background: white;
+      }
+
+      .option-card:hover {
+        border-color: #d4a574;
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(212, 165, 116, 0.3);
+      }
+
+      .option-card.selected {
+        border-color: #c88e5c;
+        background: linear-gradient(135deg, #fff9f0 0%, #fef5e7 100%);
+        box-shadow: 0 5px 15px rgba(200, 142, 92, 0.4);
+      }
+
+      .option-card.selected::after {
+        content: "✓";
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        background: #c88e5c;
+        color: white;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 0.9rem;
+      }
+
+      .option-image {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 10px;
+      }
+
+      .option-name {
+        font-weight: 600;
+        color: #6b4423;
+        font-size: 0.95rem;
+        margin-bottom: 5px;
+      }
+
+      .option-price {
+        color: #c88e5c;
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+
+      /* Size Options */
+      .size-options {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+      }
+
+      .size-card {
+        border: 3px solid #e8dcc8;
+        border-radius: 12px;
+        padding: 20px 15px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        background: white;
+      }
+
+      .size-card:hover {
+        border-color: #d4a574;
+        transform: translateY(-3px);
+      }
+
+      .size-card.selected {
+        border-color: #c88e5c;
+        background: linear-gradient(135deg, #fff9f0 0%, #fef5e7 100%);
+      }
+
+      .size-icon {
+        font-size: 2.5rem;
+        color: #d4a574;
+        margin-bottom: 10px;
+      }
+
+      .size-name {
+        font-weight: 600;
+        color: #6b4423;
+        font-size: 1rem;
+        margin-bottom: 5px;
+      }
+
+      .size-description {
+        font-size: 0.8rem;
+        color: #8b7355;
+        margin-bottom: 8px;
+      }
+
+      .size-price {
+        color: #c88e5c;
+        font-weight: 600;
+        font-size: 1rem;
+      }
+
+      /* Toppings Grid */
+      .toppings-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+        gap: 12px;
+      }
+
+      .topping-card {
+        border: 2px solid #e8dcc8;
+        border-radius: 10px;
+        padding: 12px 8px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        background: white;
+      }
+
+      .topping-card:hover {
+        border-color: #d4a574;
+      }
+
+      .topping-card.selected {
+        border-color: #c88e5c;
+        background: linear-gradient(135deg, #fff9f0 0%, #fef5e7 100%);
+      }
+
+      .topping-icon {
+        font-size: 2rem;
+        margin-bottom: 8px;
+      }
+
+      .topping-name {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: #6b4423;
+        margin-bottom: 3px;
+      }
+
+      .topping-price {
+        font-size: 0.8rem;
+        color: #c88e5c;
+        font-weight: 600;
+      }
+
+      /* Summary Panel */
+      .summary-panel {
+        position: sticky;
+        top: 20px;
+      }
+
+      .summary-card {
+        background: white;
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: 0 5px 20px rgba(139, 90, 60, 0.1);
+        margin-bottom: 20px;
+      }
+
+      .summary-title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #8b5a3c;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .preview-image {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 12px;
+        margin-bottom: 20px;
+        border: 3px solid #e8dcc8;
+      }
+
+      .summary-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 12px 0;
+        color: #6b4423;
+        border-bottom: 1px solid #f0ebe3;
+      }
+
+      .summary-item:last-child {
+        border-bottom: none;
+      }
+
+      .summary-label {
+        font-weight: 500;
+      }
+
+      .summary-value {
+        font-weight: 600;
+        color: #c88e5c;
+      }
+
+      .summary-total {
+        display: flex;
+        justify-content: space-between;
+        padding: 15px 0;
+        margin-top: 15px;
+        border-top: 2px solid #d4a574;
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: #8b5a3c;
+      }
+
+      .btn-add-custom {
+        background: linear-gradient(135deg, #d4a574 0%, #c88e5c 100%);
+        border: none;
+        color: white;
+        padding: 15px;
+        border-radius: 10px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        width: 100%;
+        transition: all 0.3s ease;
+        margin-top: 20px;
+      }
+
+      .btn-add-custom:hover {
+        background: linear-gradient(135deg, #c88e5c 0%, #b67d4a 100%);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(200, 142, 92, 0.4);
+        color: white;
+      }
+
+      .btn-add-custom:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      .selected-items-list {
+        background: #fef5e7;
+        border-radius: 10px;
+        padding: 15px;
+        margin-bottom: 20px;
+      }
+
+      .selected-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 0;
+        font-size: 0.9rem;
+        color: #6b4423;
+      }
+
+      @media (max-width: 1024px) {
+        .customizer-container {
+          grid-template-columns: 1fr;
+        }
+
+        .summary-panel {
+          position: static;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .page-header h1 {
+          font-size: 2rem;
+        }
+
+        .option-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .size-options {
+          grid-template-columns: 1fr;
+        }
+
+        .toppings-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content-wrapper">
+      <!-- nav bar -->
+      <nav class="navbar navbar-expand-lg bg-body-tertiary p-3">
+        <div class="container">
+          <div class="d-flex align-items-center">
+            <img
+              src="funcake-logo.png"
+              alt="FunCake Logo"
+              style="height: 40px; margin-right: 10px"
+            />
+            <a class="navbar-brand mb-0 h1 text-white" href="index.html"
+              >FunCake</a
+            >
+          </div>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ms-auto d-flex gap-3">
+              <a class="nav-link text-white" href="index.html">Home</a>
+              <a class="nav-link text-white" href="menu.html">Menu</a>
+              <a
+                class="nav-link active text-white"
+                aria-current="page"
+                href="customizer.html"
+                >Customizer</a
+              >
+              <a class="nav-link text-white" href="#">Contact us</a>
+              <a
+                class="nav-link bi bi-cart text-white"
+                href="checkout.html"
+                style="position: relative"
+              >
+                <span class="cart-badge" id="cartBadge" style="display: none"
+                  >0</span
+                >
+              </a>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Page Header -->
+      <section class="page-header">
+        <div class="container">
+          <h1>Create Your Custom FunCake</h1>
+          <p>Build your perfect pancake creation, your way!</p>
+        </div>
+      </section>
+
+      <!-- Customizer Section -->
+      <section class="customizer-section">
+        <div class="container">
+          <div class="customizer-container">
+            <!-- Left: Customization Options -->
+            <div class="options-container">
+              <!-- Size Selection -->
+              <div class="option-section">
+                <div class="option-title">
+                  <i class="bi bi-stack"></i> Choose Size
+                </div>
+                <div class="size-options">
+                  <div
+                    class="size-card"
+                    data-size="small"
+                    data-price="149"
+                    onclick="selectSize('small', 149)"
+                  >
+                    <div class="size-icon">
+                      <i class="fa-solid fa-bread-slice"></i>
+                    </div>
+                    <div class="size-name">Small</div>
+                    <div class="size-description">3 pancakes</div>
+                    <div class="size-price">₱149</div>
+                  </div>
+                  <div
+                    class="size-card selected"
+                    data-size="medium"
+                    data-price="199"
+                    onclick="selectSize('medium', 199)"
+                  >
+                    <div class="size-icon">
+                      <i class="fa-solid fa-cheese"></i>
+                    </div>
+                    <div class="size-name">Medium</div>
+                    <div class="size-description">5 pancakes</div>
+                    <div class="size-price">₱199</div>
+                  </div>
+                  <div
+                    class="size-card"
+                    data-size="large"
+                    data-price="249"
+                    onclick="selectSize('large', 249)"
+                  >
+                    <div class="size-icon">
+                      <i class="fa-solid fa-cake-candles"></i>
+                    </div>
+                    <div class="size-name">Large</div>
+                    <div class="size-description">7 pancakes</div>
+                    <div class="size-price">₱249</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Base Flavor -->
+              <div class="option-section">
+                <div class="option-title">
+                  <i class="bi bi-palette"></i> Select Base Flavor
+                </div>
+                <div class="option-grid">
+                  <div
+                    class="option-card selected"
+                    data-flavor="classic"
+                    data-price="0"
+                    onclick="selectFlavor('classic', 0)"
+                  >
+                    <img
+                      src="https://images.unsplash.com/photo-1597249637214-a85d31f434d6?w=100&h=100&fit=crop"
+                      alt="Classic"
+                      class="option-image"
+                    />
+                    <div class="option-name">Classic</div>
+                    <div class="option-price">Free</div>
+                  </div>
+                  <div
+                    class="option-card"
+                    data-flavor="ube"
+                    data-price="30"
+                    onclick="selectFlavor('ube', 30)"
+                  >
+                    <img
+                      src="https://deliciouslyrushed.com/wp-content/uploads/2024/03/stacked-ube-pancakes-with-ube-sauce.jpg"
+                      alt="Ube"
+                      class="option-image"
+                    />
+                    <div class="option-name">Ube</div>
+                    <div class="option-price">+₱30</div>
+                  </div>
+                  <div
+                    class="option-card"
+                    data-flavor="pandan"
+                    data-price="30"
+                    onclick="selectFlavor('pandan', 30)"
+                  >
+                    <img
+                      src="https://images.pexels.com/photos/6802090/pexels-photo-6802090.jpeg?w=100&h=100&fit=crop"
+                      alt="Pandan"
+                      class="option-image"
+                    />
+                    <div class="option-name">Pandan</div>
+                    <div class="option-price">+₱30</div>
+                  </div>
+                  <div
+                    class="option-card"
+                    data-flavor="chocolate"
+                    data-price="30"
+                    onclick="selectFlavor('chocolate', 30)"
+                  >
+                    <img
+                      src="https://images.pexels.com/photos/7144893/pexels-photo-7144893.jpeg?w=100&h=100&fit=crop"
+                      alt="Chocolate"
+                      class="option-image"
+                    />
+                    <div class="option-name">Chocolate</div>
+                    <div class="option-price">+₱30</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Toppings -->
+              <div class="option-section">
+                <div class="option-title">
+                  <i class="bi bi-stars"></i> Add Toppings (Select All You Can)
+                </div>
+                <div class="toppings-grid">
+                  <div
+                    class="topping-card"
+                    data-topping="butter"
+                    data-price="15"
+                    onclick="toggleTopping('butter', 15, '🧈')"
+                  >
+                    <div class="topping-icon">🧈</div>
+                    <div class="topping-name">Butter</div>
+                    <div class="topping-price">+₱15</div>
+                  </div>
+                  <div
+                    class="topping-card"
+                    data-topping="syrup"
+                    data-price="20"
+                    onclick="toggleTopping('syrup', 20, '🍯')"
+                  >
+                    <div class="topping-icon">🍯</div>
+                    <div class="topping-name">Maple Syrup</div>
+                    <div class="topping-price">+₱20</div>
+                  </div>
+                  <div
+                    class="topping-card"
+                    data-topping="strawberry"
+                    data-price="35"
+                    onclick="toggleTopping('strawberry', 35, '💖')"
+                  >
+                    <div class="topping-icon">💖</div>
+                    <div class="topping-name">Strawberry</div>
+                    <div class="topping-price">+₱35</div>
+                  </div>
+                  <div
+                    class="topping-card"
+                    data-topping="blueberry"
+                    data-price="35"
+                    onclick="toggleTopping('blueberry', 35, '💙')"
+                  >
+                    <div class="topping-icon">💙</div>
+                    <div class="topping-name">Blueberry</div>
+                    <div class="topping-price">+₱35</div>
+                  </div>
+                  <div
+                    class="topping-card"
+                    data-topping="banana"
+                    data-price="25"
+                    onclick="toggleTopping('banana', 25, '🍌')"
+                  >
+                    <div class="topping-icon">🍌</div>
+                    <div class="topping-name">Banana</div>
+                    <div class="topping-price">+₱25</div>
+                  </div>
+                  <div
+                    class="topping-card"
+                    data-topping="mango"
+                    data-price="30"
+                    onclick="toggleTopping('mango', 30, '🥭')"
+                  >
+                    <div class="topping-icon">🥭</div>
+                    <div class="topping-name">Mango</div>
+                    <div class="topping-price">+₱30</div>
+                  </div>
+                  <div
+                    class="topping-card"
+                    data-topping="chocolate-chips"
+                    data-price="25"
+                    onclick="toggleTopping('chocolate-chips', 25, '🍫')"
+                  >
+                    <div class="topping-icon">🍫</div>
+                    <div class="topping-name">Choco Chips</div>
+                    <div class="topping-price">+₱25</div>
+                  </div>
+                  <div
+                    class="topping-card"
+                    data-topping="whipped-cream"
+                    data-price="30"
+                    onclick="toggleTopping('whipped-cream', 30, '🍦')"
+                  >
+                    <div class="topping-icon">🍦</div>
+                    <div class="topping-name">Whipped Cream</div>
+                    <div class="topping-price">+₱30</div>
+                  </div>
+                  <div
+                    class="topping-card"
+                    data-topping="nuts"
+                    data-price="25"
+                    onclick="toggleTopping('nuts', 25, '🥜')"
+                  >
+                    <div class="topping-icon">🥜</div>
+                    <div class="topping-name">Crushed Nuts</div>
+                    <div class="topping-price">+₱25</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Drizzle -->
+              <div class="option-section">
+                <div class="option-title">
+                  <i class="bi bi-droplet"></i> Choose Drizzle
+                </div>
+                <div class="option-grid">
+                  <div
+                    class="option-card"
+                    data-drizzle="none"
+                    data-price="0"
+                    onclick="selectDrizzle('none', 0)"
+                  >
+                    <div class="option-icon" style="font-size: 3rem">❌</div>
+                    <div class="option-name">No Drizzle</div>
+                    <div class="option-price">Free</div>
+                  </div>
+                  <div
+                    class="option-card"
+                    data-drizzle="caramel"
+                    data-price="25"
+                    onclick="selectDrizzle('caramel', 25)"
+                  >
+                    <div class="option-icon" style="font-size: 3rem">🍯</div>
+                    <div class="option-name">Caramel</div>
+                    <div class="option-price">+₱25</div>
+                  </div>
+                  <div
+                    class="option-card"
+                    data-drizzle="chocolate"
+                    data-price="25"
+                    onclick="selectDrizzle('chocolate', 25)"
+                  >
+                    <div class="option-icon" style="font-size: 3rem">🍫</div>
+                    <div class="option-name">Chocolate</div>
+                    <div class="option-price">+₱25</div>
+                  </div>
+                  <div
+                    class="option-card"
+                    data-drizzle="ube-halaya"
+                    data-price="30"
+                    onclick="selectDrizzle('ube-halaya', 30)"
+                  >
+                    <div class="option-icon" style="font-size: 3rem">💜</div>
+                    <div class="option-name">Ube Halaya</div>
+                    <div class="option-price">+₱30</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: Summary Panel -->
+            <div class="summary-panel">
+              <div class="summary-card">
+                <div class="summary-title">Your Custom FunCake</div>
+                <img
+                  id="previewImage"
+                  src="https://images.unsplash.com/photo-1597249637214-a85d31f434d6?w=400&h=300&fit=crop"
+                  alt="Preview"
+                  class="preview-image"
+                />
+
+                <div class="selected-items-list">
+                  <div class="selected-item">
+                    <span>Size:</span>
+                    <strong id="selectedSize">Medium (5 pcs)</strong>
+                  </div>
+                  <div class="selected-item">
+                    <span>Base:</span>
+                    <strong id="selectedFlavor">Classic</strong>
+                  </div>
+                  <div class="selected-item">
+                    <span>Toppings:</span>
+                    <strong id="selectedToppings">None</strong>
+                  </div>
+                  <div class="selected-item">
+                    <span>Drizzle:</span>
+                    <strong id="selectedDrizzle">None</strong>
+                  </div>
+                </div>
+
+                <div class="summary-item">
+                  <span class="summary-label">Base Price:</span>
+                  <span class="summary-value" id="basePrice">₱199.00</span>
+                </div>
+                <div class="summary-item">
+                  <span class="summary-label">Add-ons:</span>
+                  <span class="summary-value" id="addonsPrice">₱0.00</span>
+                </div>
+
+                <div class="summary-total">
+                  <span>Total:</span>
+                  <span id="totalPrice">₱199.00</span>
+                </div>
+
+                <button
+                  class="btn btn-add-custom"
+                  onclick="addCustomCakeToCart()"
+                >
+                  <i class="bi bi-cart-plus"></i> Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- footer section -->
+    <footer class="bg-dark text-white py-4">
+      <div class="container text-center">
+        <p class="mb-1">&copy; 2025 FunCake. All rights reserved.</p>
+        <div class="d-flex justify-content-center gap-3">
+          <a href="#" class="text-white text-decoration-none">Privacy Policy</a>
+          <a href="#" class="text-white text-decoration-none"
+            >Terms of Service</a
+          >
+          <a href="#" class="text-white text-decoration-none">Contact</a>
+        </div>
+      </div>
+    </footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      // State management
+      let customCake = {
+        size: { name: "medium", price: 199, description: "5 pancakes" },
+        flavor: { name: "classic", price: 0 },
+        toppings: [],
+        drizzle: { name: "none", price: 0 },
+      };
+
+      // Flavor images mapping
+      const flavorImages = {
+        classic:
+          "https://images.unsplash.com/photo-1597249637214-a85d31f434d6?w=400&h=300&fit=crop",
+        ube: "https://deliciouslyrushed.com/wp-content/uploads/2024/03/stacked-ube-pancakes-with-ube-sauce.jpg",
+        pandan:
+          "https://images.pexels.com/photos/6802090/pexels-photo-6802090.jpeg?w=400&h=300&fit=crop",
+        chocolate:
+          "https://images.pexels.com/photos/7144893/pexels-photo-7144893.jpeg?w=400&h=300&fit=crop",
+      };
+
+      // Size selection
+      function selectSize(size, price) {
+        document.querySelectorAll(".size-card").forEach((card) => {
+          card.classList.remove("selected");
+        });
+        document
+          .querySelector(`.size-card[data-size="${size}"]`)
+          .classList.add("selected");
+
+        const descriptions = {
+          small: "3 pancakes",
+          medium: "5 pancakes",
+          large: "7 pancakes",
+        };
+
+        customCake.size = {
+          name: size,
+          price: price,
+          description: descriptions[size],
+        };
+
+        updateSummary();
+      }
+
+      // Flavor selection
+      function selectFlavor(flavor, price) {
+        document
+          .querySelectorAll(".option-card[data-flavor]")
+          .forEach((card) => {
+            card.classList.remove("selected");
+          });
+        document
+          .querySelector(`.option-card[data-flavor="${flavor}"]`)
+          .classList.add("selected");
+
+        customCake.flavor = { name: flavor, price: price };
+
+        // Update preview image
+        document.getElementById("previewImage").src = flavorImages[flavor];
+
+        updateSummary();
+      }
+
+      // Topping toggle
+      function toggleTopping(topping, price, icon) {
+        const card = document.querySelector(
+          `.topping-card[data-topping="${topping}"]`
+        );
+        card.classList.toggle("selected");
+
+        const existingIndex = customCake.toppings.findIndex(
+          (t) => t.name === topping
+        );
+
+        if (existingIndex > -1) {
+          customCake.toppings.splice(existingIndex, 1);
+        } else {
+          customCake.toppings.push({ name: topping, price: price, icon: icon });
+        }
+
+        updateSummary();
+      }
+
+      // Drizzle selection
+      function selectDrizzle(drizzle, price) {
+        document
+          .querySelectorAll(".option-card[data-drizzle]")
+          .forEach((card) => {
+            card.classList.remove("selected");
+          });
+        document
+          .querySelector(`.option-card[data-drizzle="${drizzle}"]`)
+          .classList.add("selected");
+
+        customCake.drizzle = { name: drizzle, price: price };
+
+        updateSummary();
+      }
+
+      // Update summary
+      function updateSummary() {
+        // Update selected items display
+        document.getElementById("selectedSize").textContent = `${
+          customCake.size.name.charAt(0).toUpperCase() +
+          customCake.size.name.slice(1)
+        } (${customCake.size.description})`;
+
+        document.getElementById("selectedFlavor").textContent =
+          customCake.flavor.name.charAt(0).toUpperCase() +
+          customCake.flavor.name.slice(1);
+
+        const toppingsText =
+          customCake.toppings.length > 0
+            ? customCake.toppings.map((t) => t.name).join(", ")
+            : "None";
+        document.getElementById("selectedToppings").textContent = toppingsText;
+
+        document.getElementById("selectedDrizzle").textContent =
+          customCake.drizzle.name.charAt(0).toUpperCase() +
+          customCake.drizzle.name.slice(1);
+
+        // Calculate prices
+        const basePrice = customCake.size.price + customCake.flavor.price;
+        const toppingsTotal = customCake.toppings.reduce(
+          (sum, t) => sum + t.price,
+          0
+        );
+        const addonsPrice = toppingsTotal + customCake.drizzle.price;
+        const totalPrice = basePrice + addonsPrice;
+
+        document.getElementById(
+          "basePrice"
+        ).textContent = `₱${basePrice.toFixed(2)}`;
+        document.getElementById(
+          "addonsPrice"
+        ).textContent = `₱${addonsPrice.toFixed(2)}`;
+        document.getElementById(
+          "totalPrice"
+        ).textContent = `₱${totalPrice.toFixed(2)}`;
+      }
+
+      // Add to cart
+      function addCustomCakeToCart() {
+        const cart = getCart();
+
+        // Create unique item name
+        const itemName = `Custom FunCake - ${customCake.flavor.name} (${customCake.size.name})`;
+
+        // Calculate total price
+        const basePrice = customCake.size.price + customCake.flavor.price;
+        const toppingsTotal = customCake.toppings.reduce(
+          (sum, t) => sum + t.price,
+          0
+        );
+        const totalPrice = basePrice + toppingsTotal + customCake.drizzle.price;
+
+        // Get current preview image
+        const image = document.getElementById("previewImage").src;
+
+        // Add to cart
+        if (cart[itemName]) {
+          cart[itemName].quantity++;
+        } else {
+          cart[itemName] = {
+            price: totalPrice,
+            quantity: 1,
+            image: image,
+            customization: {
+              size: customCake.size,
+              flavor: customCake.flavor,
+              toppings: customCake.toppings,
+              drizzle: customCake.drizzle,
+            },
+          };
+        }
+
+        saveCart(cart);
+
+        // Visual feedback
+        const btn = document.querySelector(".btn-add-custom");
+        btn.innerHTML = '<i class="bi bi-check-circle"></i> Added to Cart!';
+        btn.style.background =
+          "linear-gradient(135deg, #8bc34a 0%, #7cb342 100%)";
+
+        setTimeout(() => {
+          btn.innerHTML = '<i class="bi bi-cart-plus"></i> Add to Cart';
+          btn.style.background =
+            "linear-gradient(135deg, #d4a574 0%, #c88e5c 100%)";
+        }, 2000);
+      }
+
+      // Cart management functions
+      function getCart() {
+        const cart = window.localStorage.getItem("funcakeCart");
+        return cart ? JSON.parse(cart) : {};
+      }
+
+      function saveCart(cart) {
+        window.localStorage.setItem("funcakeCart", JSON.stringify(cart));
+        updateCartBadge();
+      }
+
+      function updateCartBadge() {
+        const cart = getCart();
+        const totalItems = Object.values(cart).reduce(
+          (sum, item) => sum + item.quantity,
+          0
+        );
+        const badge = document.getElementById("cartBadge");
+
+        if (totalItems > 0) {
+          badge.textContent = totalItems;
+          badge.style.display = "flex";
+        } else {
+          badge.style.display = "none";
+        }
+      }
+
+      // Initialize cart badge on page load
+      updateCartBadge();
+    </script>
+  </body>
+</html>
