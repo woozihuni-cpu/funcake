@@ -479,14 +479,13 @@
               <a class="nav-link text-white" href="customizer.html"
                 >Customizer</a
               >
-              <a class="nav-link text-white active" href="#">Contact us</a>
-              <a
-                class="nav-link bi bi-cart text-white"
-                href="checkout.html"
-              ></a>
-              <a class="nav-link text-white" href="login.html"
-                ><i class="bi bi-person-circle me-2"></i>Login</a
-              >
+              <a class="nav-link text-white" href="contactus.html">Contact us</a>
+              <a class="nav-link bi bi-cart text-white" href="checkout.html" style="position: relative">
+                <span class="cart-badge" id="cartBadge" style="display: none">0</span>
+                  </a>
+                  <a class="nav-link text-white" href="#" id="accountLink" style="position: relative">
+                    <i class="bi bi-person-circle"></i>
+                  </a>
             </div>
           </div>
         </div>
@@ -496,9 +495,7 @@
       <section class="page-header">
         <div class="container">
           <h1>Get in Touch with FunCake</h1>
-          <p>
-            We'd love to hear from you! Reach out with any questions or feedback
-          </p>
+          <p>We'd love to hear from you! Reach out with any questions or feedback</p>
         </div>
       </section>
 
@@ -512,10 +509,7 @@
                 <i class="bi bi-geo-alt-fill"></i>
               </div>
               <h3>Visit Us</h3>
-              <p>
-                123 Pancake Street<br />Makati City, Metro Manila<br />Philippines
-                1200
-              </p>
+              <p>123 Pancake Street<br />Makati City, Metro Manila<br />Philippines 1200</p>
             </div>
 
             <div class="info-card">
@@ -549,8 +543,7 @@
             <div class="contact-form-card">
               <h2 class="form-title">Send Us a Message</h2>
               <p class="form-subtitle">
-                Have a question or feedback? Fill out the form below and we'll
-                get back to you soon!
+                Have a question or feedback? Fill out the form below and we'll get back to you soon!
               </p>
 
               <div id="contactAlert" class="alert"></div>
@@ -558,9 +551,7 @@
               <form id="contactForm">
                 <div class="form-row">
                   <div class="form-group">
-                    <label for="name"
-                      >Full Name <span class="required">*</span></label
-                    >
+                    <label for="name">Full Name <span class="required">*</span></label>
                     <div class="input-wrapper">
                       <i class="bi bi-person"></i>
                       <input
@@ -573,9 +564,7 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="email"
-                      >Email <span class="required">*</span></label
-                    >
+                    <label for="email">Email <span class="required">*</span></label>
                     <div class="input-wrapper">
                       <i class="bi bi-envelope"></i>
                       <input
@@ -602,9 +591,7 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="subject"
-                      >Subject <span class="required">*</span></label
-                    >
+                    <label for="subject">Subject <span class="required">*</span></label>
                     <div class="input-wrapper">
                       <i class="bi bi-chat-dots"></i>
                       <select id="subject" required>
@@ -621,9 +608,7 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="message"
-                    >Message <span class="required">*</span></label
-                  >
+                  <label for="message">Message <span class="required">*</span></label>
                   <div class="input-wrapper">
                     <i class="bi bi-pencil-square" style="top: 18px"></i>
                     <textarea
@@ -644,7 +629,7 @@
             <!-- Map & Additional Info -->
             <div class="map-info-card">
               <h2 class="map-title">Find Us Here</h2>
-
+              
               <div class="map-container">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3861.520156425915!2d121.03107831484157!3d14.555057389827252!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c90264a0ed89%3A0xd175c6849491a204!2sMakati%2C%20Metro%20Manila!5e0!3m2!1sen!2sph!4v1234567890123!5m2!1sen!2sph"
@@ -689,8 +674,7 @@
           <div class="social-section">
             <h2 class="social-title">Follow Us on Social Media</h2>
             <p class="social-subtitle">
-              Stay updated with our latest treats, promotions, and pancake
-              creations!
+              Stay updated with our latest treats, promotions, and pancake creations!
             </p>
             <div class="social-links">
               <a href="#" class="social-link">
@@ -715,15 +699,61 @@
     </div>
 
     <!-- footer section -->
-    <footer class="bg-dark text-white py-4">
-      <div class="container text-center">
-        <p class="mb-1">&copy; 2025 FunCake. All rights reserved.</p>
-        <div class="d-flex justify-content-center gap-3">
-          <a href="#" class="text-white text-decoration-none">Privacy Policy</a>
-          <a href="#" class="text-white text-decoration-none"
-            >Terms of Service</a
-          >
-          <a href="#" class="text-white text-decoration-none">Contact</a>
+    <footer class="bg-dark text-white py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 mb-4">
+            <div class="d-flex align-items-center mb-3">
+              <img src="funcake-logo.png" alt="FunCake Logo" style="height: 40px; margin-right: 10px" />
+              <h5 class="mb-0 text-white">FunCake</h5>
+            </div>
+            <p style="color: #adb5bd">Delicious Filipino-inspired pancakes made with love and a sprinkle of magic.</p>
+            <div class="d-flex gap-3">
+              <a href="#" class="text-white" style="font-size: 1.5rem"><i class="bi bi-facebook"></i></a>
+              <a href="#" class="text-white" style="font-size: 1.5rem"><i class="bi bi-instagram"></i></a>
+              <a href="#" class="text-white" style="font-size: 1.5rem"><i class="bi bi-twitter"></i></a>
+            </div>
+          </div>
+          
+          <div class="col-md-2 mb-4">
+            <h6 class="text-white mb-3">Quick Links</h6>
+            <ul class="list-unstyled">
+              <li class="mb-2"><a href="index.html" class="text-decoration-none" style="color: #adb5bd">Home</a></li>
+              <li class="mb-2"><a href="menu.html" class="text-decoration-none" style="color: #adb5bd">Menu</a></li>
+              <li class="mb-2"><a href="customizer.html" class="text-decoration-none" style="color: #adb5bd">Customizer</a></li>
+              <li class="mb-2"><a href="contactus.html" class="text-decoration-none" style="color: #adb5bd">Contact</a></li>
+            </ul>
+          </div>
+          
+          <div class="col-md-3 mb-4">
+            <h6 class="text-white mb-3">Contact Info</h6>
+            <ul class="list-unstyled" style="color: #adb5bd">
+              <li class="mb-2"><i class="bi bi-geo-alt me-2"></i>Makati City, Philippines</li>
+              <li class="mb-2"><i class="bi bi-telephone me-2"></i>+63 917 123 4567</li>
+              <li class="mb-2"><i class="bi bi-envelope me-2"></i>hello@funcake.com</li>
+            </ul>
+          </div>
+          
+          <div class="col-md-3 mb-4">
+            <h6 class="text-white mb-3">Opening Hours</h6>
+            <ul class="list-unstyled" style="color: #adb5bd">
+              <li class="mb-2">Mon-Sat: 8:00 AM - 8:00 PM</li>
+              <li class="mb-2">Sunday: 9:00 AM - 6:00 PM</li>
+            </ul>
+          </div>
+        </div>
+        
+        <hr style="border-color: #495057">
+        
+        <div class="row">
+          <div class="col-md-6 text-center text-md-start mb-2">
+            <p class="mb-0" style="color: #adb5bd">&copy; 2025 FunCake. All rights reserved.</p>
+          </div>
+          <div class="col-md-6 text-center text-md-end">
+            <a href="#" class="text-decoration-none me-3" style="color: #adb5bd">Privacy Policy</a>
+            <a href="#" class="text-decoration-none me-3" style="color: #adb5bd">Terms of Service</a>
+            <a href="#" class="text-decoration-none" style="color: #adb5bd">Cookies</a>
+          </div>
         </div>
       </div>
     </footer>
@@ -799,6 +829,17 @@
 
       // Initialize cart badge
       updateCartBadge();
+
+
+      // added acript
+      const accountLink = document.getElementById("accountLink");
+      if (localStorage.getItem("funcakeLoggedIn") === "true") {
+        accountLink.href = "account.html";
+        accountLink.title = "My Account";
+      } else {
+        accountLink.href = "login.html";
+        accountLink.title = "Login";
+      }
     </script>
   </body>
 </html>

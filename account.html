@@ -499,21 +499,13 @@
               <a class="nav-link text-white" href="customizer.html"
                 >Customizer</a
               >
-              <a class="nav-link text-white" href="contactus.html"
-                >Contact us</a
-              >
-              <a
-                class="nav-link bi bi-cart text-white"
-                href="checkout.html"
-                style="position: relative"
-              >
-                <span class="cart-badge" id="cartBadge" style="display: none"
-                  >0</span
-                >
-              </a>
-              <a class="nav-link active text-white" href="account.html">
-                <i class="bi bi-person-circle"></i>
-              </a>
+              <a class="nav-link text-white" href="contactus.html">Contact us</a>
+              <a class="nav-link bi bi-cart text-white" href="checkout.html" style="position: relative">
+                <span class="cart-badge" id="cartBadge" style="display: none">0</span>
+                  </a>
+                  <a class="nav-link text-white" href="#" id="accountLink" style="position: relative">
+                    <i class="bi bi-person-circle"></i>
+                  </a>
             </div>
           </div>
         </div>
@@ -602,23 +594,13 @@
               <!-- Orders Section -->
               <div class="content-section" id="ordersSection">
                 <h2 class="section-title">Order History</h2>
-
+                
                 <div class="orders-filter">
-                  <button class="filter-btn active" data-filter="all">
-                    All Orders
-                  </button>
-                  <button class="filter-btn" data-filter="completed">
-                    Completed
-                  </button>
-                  <button class="filter-btn" data-filter="processing">
-                    Processing
-                  </button>
-                  <button class="filter-btn" data-filter="pending">
-                    Pending
-                  </button>
-                  <button class="filter-btn" data-filter="cancelled">
-                    Cancelled
-                  </button>
+                  <button class="filter-btn active" data-filter="all">All Orders</button>
+                  <button class="filter-btn" data-filter="completed">Completed</button>
+                  <button class="filter-btn" data-filter="processing">Processing</button>
+                  <button class="filter-btn" data-filter="pending">Pending</button>
+                  <button class="filter-btn" data-filter="cancelled">Cancelled</button>
                 </div>
 
                 <div id="ordersContainer">
@@ -632,10 +614,7 @@
                 <div class="empty-state">
                   <i class="bi bi-gear"></i>
                   <h3>Settings Coming Soon</h3>
-                  <p>
-                    We're working on adding more customization options for your
-                    account.
-                  </p>
+                  <p>We're working on adding more customization options for your account.</p>
                 </div>
               </div>
             </div>
@@ -645,19 +624,65 @@
     </div>
 
     <!-- footer section -->
-    <footer class="bg-dark text-white py-4">
-      <div class="container text-center">
-        <p class="mb-1">&copy; 2025 FunCake. All rights reserved.</p>
-        <div class="d-flex justify-content-center gap-3">
-          <a href="#" class="text-white text-decoration-none">Privacy Policy</a>
-          <a href="#" class="text-white text-decoration-none"
-            >Terms of Service</a
-          >
-          <a href="#" class="text-white text-decoration-none">Contact</a>
+    <footer class="bg-dark text-white py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 mb-4">
+            <div class="d-flex align-items-center mb-3">
+              <img src="funcake-logo.png" alt="FunCake Logo" style="height: 40px; margin-right: 10px" />
+              <h5 class="mb-0 text-white">FunCake</h5>
+            </div>
+            <p style="color: #adb5bd">Delicious Filipino-inspired pancakes made with love and a sprinkle of magic.</p>
+            <div class="d-flex gap-3">
+              <a href="#" class="text-white" style="font-size: 1.5rem"><i class="bi bi-facebook"></i></a>
+              <a href="#" class="text-white" style="font-size: 1.5rem"><i class="bi bi-instagram"></i></a>
+              <a href="#" class="text-white" style="font-size: 1.5rem"><i class="bi bi-twitter"></i></a>
+            </div>
+          </div>
+          
+          <div class="col-md-2 mb-4">
+            <h6 class="text-white mb-3">Quick Links</h6>
+            <ul class="list-unstyled">
+              <li class="mb-2"><a href="index.html" class="text-decoration-none" style="color: #adb5bd">Home</a></li>
+              <li class="mb-2"><a href="menu.html" class="text-decoration-none" style="color: #adb5bd">Menu</a></li>
+              <li class="mb-2"><a href="customizer.html" class="text-decoration-none" style="color: #adb5bd">Customizer</a></li>
+              <li class="mb-2"><a href="contactus.html" class="text-decoration-none" style="color: #adb5bd">Contact</a></li>
+            </ul>
+          </div>
+          
+          <div class="col-md-3 mb-4">
+            <h6 class="text-white mb-3">Contact Info</h6>
+            <ul class="list-unstyled" style="color: #adb5bd">
+              <li class="mb-2"><i class="bi bi-geo-alt me-2"></i>Makati City, Philippines</li>
+              <li class="mb-2"><i class="bi bi-telephone me-2"></i>+63 917 123 4567</li>
+              <li class="mb-2"><i class="bi bi-envelope me-2"></i>hello@funcake.com</li>
+            </ul>
+          </div>
+          
+          <div class="col-md-3 mb-4">
+            <h6 class="text-white mb-3">Opening Hours</h6>
+            <ul class="list-unstyled" style="color: #adb5bd">
+              <li class="mb-2">Mon-Sat: 8:00 AM - 8:00 PM</li>
+              <li class="mb-2">Sunday: 9:00 AM - 6:00 PM</li>
+            </ul>
+          </div>
+        </div>
+        
+        <hr style="border-color: #495057">
+        
+        <div class="row">
+          <div class="col-md-6 text-center text-md-start mb-2">
+            <p class="mb-0" style="color: #adb5bd">&copy; 2025 FunCake. All rights reserved.</p>
+          </div>
+          <div class="col-md-6 text-center text-md-end">
+            <a href="#" class="text-decoration-none me-3" style="color: #adb5bd">Privacy Policy</a>
+            <a href="#" class="text-decoration-none me-3" style="color: #adb5bd">Terms of Service</a>
+            <a href="#" class="text-decoration-none" style="color: #adb5bd">Cookies</a>
+          </div>
         </div>
       </div>
     </footer>
-
+    
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
@@ -666,9 +691,9 @@
 
     <script>
       // Check if user is logged in -- commented out lang for now for demo purpose
-      //   if (localStorage.getItem("funcakeLoggedIn") !== "true") {
-      //     window.location.href = "login.html";
-      //   }
+      if (localStorage.getItem("funcakeLoggedIn") !== "true") {
+        window.location.href = "login.html";
+      }
 
       // Get user data
       const userEmail = localStorage.getItem("funcakeUserEmail");
@@ -677,33 +702,26 @@
       const currentUser = users[userEmail];
 
       // Update header
-      document.getElementById("userName").textContent =
-        userName || "Welcome Back!";
+      document.getElementById("userName").textContent = userName || "Welcome Back!";
       document.getElementById("userEmail").textContent = userEmail;
 
       // Update profile
       if (currentUser) {
         document.getElementById("profileName").textContent = currentUser.name;
         document.getElementById("profileEmail").textContent = userEmail;
-        document.getElementById("profilePhone").textContent =
-          currentUser.phone || "Not provided";
-        document.getElementById("profileAddress").textContent =
-          currentUser.address || "Not provided";
-
+        document.getElementById("profilePhone").textContent = currentUser.phone || "Not provided";
+        document.getElementById("profileAddress").textContent = currentUser.address || "Not provided";
+        
         const createdDate = new Date(currentUser.createdAt);
-        document.getElementById("profileCreated").textContent =
-          createdDate.toLocaleDateString();
+        document.getElementById("profileCreated").textContent = createdDate.toLocaleDateString();
       }
 
       // Load orders
       function loadOrders(filter = "all") {
-        const orders = JSON.parse(
-          localStorage.getItem("funcakeOrders") || "[]"
-        );
-        const userOrders = orders.filter((order) => order.email === userEmail);
-
-        document.getElementById("profileOrders").textContent =
-          userOrders.length;
+        const orders = JSON.parse(localStorage.getItem("funcakeOrders") || "[]");
+        const userOrders = orders.filter(order => order.email === userEmail);
+        
+        document.getElementById("profileOrders").textContent = userOrders.length;
 
         const container = document.getElementById("ordersContainer");
 
@@ -723,9 +741,7 @@
 
         let filteredOrders = userOrders;
         if (filter !== "all") {
-          filteredOrders = userOrders.filter(
-            (order) => order.status === filter
-          );
+          filteredOrders = userOrders.filter(order => order.status === filter);
         }
 
         if (filteredOrders.length === 0) {
@@ -740,7 +756,7 @@
         }
 
         let html = "";
-        filteredOrders.reverse().forEach((order) => {
+        filteredOrders.reverse().forEach(order => {
           const orderDate = new Date(order.date);
           const statusClass = `status-${order.status}`;
 
@@ -759,18 +775,12 @@
           for (const [itemName, itemData] of Object.entries(order.cart)) {
             html += `
               <div class="order-item">
-                <img src="${
-                  itemData.image
-                }" alt="${itemName}" class="order-item-image" />
+                <img src="${itemData.image}" alt="${itemName}" class="order-item-image" />
                 <div class="order-item-details">
                   <div class="order-item-name">${itemName}</div>
-                  <div class="order-item-qty">Quantity: ${
-                    itemData.quantity
-                  }</div>
+                  <div class="order-item-qty">Quantity: ${itemData.quantity}</div>
                 </div>
-                <div class="order-item-price">₱${(
-                  itemData.price * itemData.quantity
-                ).toFixed(2)}</div>
+                <div class="order-item-price">₱${(itemData.price * itemData.quantity).toFixed(2)}</div>
               </div>
             `;
           }
@@ -792,11 +802,9 @@
 
       // Reorder function
       function reorder(orderId) {
-        const orders = JSON.parse(
-          localStorage.getItem("funcakeOrders") || "[]"
-        );
-        const order = orders.find((o) => o.id === orderId);
-
+        const orders = JSON.parse(localStorage.getItem("funcakeOrders") || "[]");
+        const order = orders.find(o => o.id === orderId);
+        
         if (order) {
           localStorage.setItem("funcakeCart", JSON.stringify(order.cart));
           window.location.href = "checkout.html";
@@ -804,22 +812,18 @@
       }
 
       // Menu navigation
-      document.querySelectorAll(".menu-link").forEach((link) => {
-        link.addEventListener("click", function (e) {
+      document.querySelectorAll(".menu-link").forEach(link => {
+        link.addEventListener("click", function(e) {
           e.preventDefault();
-
-          document
-            .querySelectorAll(".menu-link")
-            .forEach((l) => l.classList.remove("active"));
+          
+          document.querySelectorAll(".menu-link").forEach(l => l.classList.remove("active"));
           this.classList.add("active");
-
-          document
-            .querySelectorAll(".content-section")
-            .forEach((s) => s.classList.remove("active"));
-
+          
+          document.querySelectorAll(".content-section").forEach(s => s.classList.remove("active"));
+          
           const section = this.dataset.section;
           document.getElementById(section + "Section").classList.add("active");
-
+          
           if (section === "orders") {
             loadOrders();
           }
@@ -827,11 +831,9 @@
       });
 
       // Filter buttons
-      document.querySelectorAll(".filter-btn").forEach((btn) => {
-        btn.addEventListener("click", function () {
-          document
-            .querySelectorAll(".filter-btn")
-            .forEach((b) => b.classList.remove("active"));
+      document.querySelectorAll(".filter-btn").forEach(btn => {
+        btn.addEventListener("click", function() {
+          document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
           this.classList.add("active");
           loadOrders(this.dataset.filter);
         });
@@ -867,6 +869,17 @@
       // Initialize
       loadOrders();
       updateCartBadge();
+
+
+      // added acript
+      const accountLink = document.getElementById("accountLink");
+      if (localStorage.getItem("funcakeLoggedIn") === "true") {
+        accountLink.href = "account.html";
+        accountLink.title = "My Account";
+      } else {
+        accountLink.href = "login.html";
+        accountLink.title = "Login";
+      }
     </script>
   </body>
 </html>
