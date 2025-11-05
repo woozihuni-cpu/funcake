@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Account - FunCake</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+    />
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        background-color: #faf8f3;
+      }
+
+      .content-wrapper {
+        flex: 1 0 auto;
+      }
+
+      footer {
+        flex-shrink: 0;
+      }
+
+      nav {
+        background: linear-gradient(135deg, #d4a574 0%, #c88e5c 100%);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .nav-link {
+        color: white;
+        border-radius: 5px;
+        border: 2px solid transparent;
+        font-weight: 500;
+        position: relative;
+      }
+
+      .nav-link:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        border-color: rgba(255, 255, 255, 0.3);
+        color: white;
+      }
+
+      .nav-link.active {
+        background-color: rgba(255, 255, 255, 0.3);
+      }
+
+      .cart-badge {
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        background: #dc3545;
+        color: white;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.7rem;
+        font-weight: bold;
+      }
+
+      /* Page Header */
+      .page-header {
+        background: linear-gradient(135deg, #d4a574 0%, #c88e5c 100%);
+        padding: 60px 0 40px;
+        color: white;
+        margin-bottom: 50px;
+      }
+
+      .header-content {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+      }
+
+      .user-avatar {
+        width: 100px;
+        height: 100px;
+        background: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        color: #c88e5c;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .user-info h1 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-bottom: 5px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      .user-info p {
+        font-size: 1.1rem;
+        opacity: 0.95;
+        margin: 0;
+      }
+
+      /* Account Section */
+      .account-section {
+        padding: 0 0 80px;
+      }
+
+      .account-container {
+        display: grid;
+        grid-template-columns: 300px 1fr;
+        gap: 40px;
+      }
+
+      /* Sidebar */
+      .account-sidebar {
+        background: white;
+        border-radius: 20px;
+        padding: 30px;
+        box-shadow: 0 5px 20px rgba(139, 90, 60, 0.1);
+        height: fit-content;
+        position: sticky;
+        top: 20px;
+      }
+
+      .sidebar-title {
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: #8b5a3c;
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid #d4a574;
+      }
+
+      .sidebar-menu {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .sidebar-menu li {
+        margin-bottom: 10px;
+      }
+
+      .sidebar-menu a {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 15px;
+        color: #6b4423;
+        text-decoration: none;
+        border-radius: 10px;
+        transition: all 0.3s;
+        font-weight: 500;
+      }
+
+      .sidebar-menu a:hover {
+        background: linear-gradient(135deg, #fff9f0 0%, #fef5e7 100%);
+        color: #8b5a3c;
+      }
+
+      .sidebar-menu a.active {
+        background: linear-gradient(135deg, #d4a574 0%, #c88e5c 100%);
+        color: white;
+      }
+
+      .sidebar-menu i {
+        font-size: 1.2rem;
+      }
+
+      .btn-logout {
+        width: 100%;
+        background: transparent;
+        border: 2px solid #dc3545;
+        color: #dc3545;
+        padding: 12px;
+        border-radius: 10px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+        margin-top: 20px;
+      }
+
+      .btn-logout:hover {
+        background: #dc3545;
+        color: white;
+      }
+
+      /* Main Content */
+      .account-content {
+        background: white;
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 5px 20px rgba(139, 90, 60, 0.1);
+      }
+
+      .content-section {
+        display: none;
+      }
+
+      .content-section.active {
+        display: block;
+      }
+
+      .section-title {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: #8b5a3c;
+        margin-bottom: 30px;
+        padding-bottom: 15px;
+        border-bottom: 3px solid #d4a574;
+      }
+
+      /* Profile Info */
+      .profile-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 25px;
+        margin-bottom: 30px;
+      }
+
+      .info-item {
+        padding: 20px;
+        background: linear-gradient(135deg, #fff9f0 0%, #fef5e7 100%);
+        border-radius: 12px;
+      }
+
+      .info-label {
+        font-size: 0.85rem;
+        color: #8b7355;
+        margin-bottom: 5px;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+
+      .info-value {
+        font-size: 1.1rem;
+        color: #6b4423;
+        font-weight: 600;
+      }
+
+      /* Orders */
+      .orders-filter {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 25px;
+        flex-wrap: wrap;
+      }
+
+      .filter-btn {
+        padding: 10px 20px;
+        border: 2px solid #e8dcc8;
+        background: white;
+        color: #6b4423;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+
+      .filter-btn:hover {
+        border-color: #d4a574;
+        background: linear-gradient(135deg, #fff9f0 0%, #fef5e7 100%);
+      }
+
+      .filter-btn.active {
+        background: linear-gradient(135deg, #d4a574 0%, #c88e5c 100%);
+        color: white;
+        border-color: #c88e5c;
+      }
+
+      .order-card {
+        border: 2px solid #e8dcc8;
+        border-radius: 15px;
+        padding: 25px;
+        margin-bottom: 20px;
+        transition: all 0.3s;
+      }
+
+      .order-card:hover {
+        border-color: #d4a574;
+        box-shadow: 0 5px 15px rgba(139, 90, 60, 0.1);
+      }
+
+      .order-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #f0ebe3;
+      }
+
+      .order-id {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #8b5a3c;
+      }
+
+      .order-date {
+        color: #8b7355;
+        font-size: 0.9rem;
+      }
+
+      .order-status {
+        padding: 6px 15px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+
+      .status-completed {
+        background: #e8f5e9;
+        color: #2e7d32;
+      }
+
+      .status-pending {
+        background: #fff3e0;
+        color: #f57c00;
+      }
+
+      .status-processing {
+        background: #e3f2fd;
+        color: #1976d2;
+      }
+
+      .status-cancelled {
+        background: #ffebee;
+        color: #c62828;
+      }
+
+      .order-items {
+        margin-bottom: 15px;
+      }
+
+      .order-item {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 10px 0;
+      }
+
+      .order-item-image {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 8px;
+      }
+
+      .order-item-details {
+        flex: 1;
+      }
+
+      .order-item-name {
+        font-weight: 600;
+        color: #6b4423;
+        margin-bottom: 3px;
+      }
+
+      .order-item-qty {
+        font-size: 0.9rem;
+        color: #8b7355;
+      }
+
+      .order-item-price {
+        font-weight: 600;
+        color: #c88e5c;
+      }
+
+      .order-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 15px;
+        border-top: 1px solid #f0ebe3;
+      }
+
+      .order-total {
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: #8b5a3c;
+      }
+
+      .btn-reorder {
+        background: linear-gradient(135deg, #d4a574 0%, #c88e5c 100%);
+        border: none;
+        color: white;
+        padding: 10px 25px;
+        border-radius: 25px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .btn-reorder:hover {
+        background: linear-gradient(135deg, #c88e5c 0%, #b67d4a 100%);
+        transform: translateY(-2px);
+      }
+
+      .empty-state {
+        text-align: center;
+        padding: 60px 20px;
+        color: #8b7355;
+      }
+
+      .empty-state i {
+        font-size: 4rem;
+        margin-bottom: 20px;
+        opacity: 0.5;
+      }
+
+      .empty-state h3 {
+        color: #8b5a3c;
+        margin-bottom: 10px;
+      }
+
+      @media (max-width: 1024px) {
+        .account-container {
+          grid-template-columns: 1fr;
+        }
+
+        .account-sidebar {
+          position: static;
+        }
+
+        .profile-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .header-content {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .user-info h1 {
+          font-size: 2rem;
+        }
+
+        .account-content {
+          padding: 25px;
+        }
+
+        .order-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content-wrapper">
+      <!-- nav bar -->
+      <nav class="navbar navbar-expand-lg bg-body-tertiary p-3">
+        <div class="container">
+          <div class="d-flex align-items-center">
+            <img
+              src="funcake-logo.png"
+              alt="FunCake Logo"
+              style="height: 40px; margin-right: 10px"
+            />
+            <a class="navbar-brand mb-0 h1 text-white" href="index.html"
+              >FunCake</a
+            >
+          </div>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ms-auto d-flex gap-3">
+              <a class="nav-link text-white" href="index.html">Home</a>
+              <a class="nav-link text-white" href="menu.html">Menu</a>
+              <a class="nav-link text-white" href="customizer.html"
+                >Customizer</a
+              >
+              <a class="nav-link text-white" href="contactus.html"
+                >Contact us</a
+              >
+              <a
+                class="nav-link bi bi-cart text-white"
+                href="checkout.html"
+                style="position: relative"
+              >
+                <span class="cart-badge" id="cartBadge" style="display: none"
+                  >0</span
+                >
+              </a>
+              <a class="nav-link active text-white" href="account.html">
+                <i class="bi bi-person-circle"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Page Header -->
+      <section class="page-header">
+        <div class="container">
+          <div class="header-content">
+            <div class="user-avatar">
+              <i class="bi bi-person-fill"></i>
+            </div>
+            <div class="user-info">
+              <h1 id="userName">Welcome Back!</h1>
+              <p id="userEmail">user@funcake.com</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Account Section -->
+      <section class="account-section">
+        <div class="container">
+          <div class="account-container">
+            <!-- Sidebar -->
+            <div class="account-sidebar">
+              <h3 class="sidebar-title">My Account</h3>
+              <ul class="sidebar-menu">
+                <li>
+                  <a href="#" class="menu-link active" data-section="profile">
+                    <i class="bi bi-person"></i>
+                    <span>Profile</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="menu-link" data-section="orders">
+                    <i class="bi bi-bag-check"></i>
+                    <span>My Orders</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="menu-link" data-section="settings">
+                    <i class="bi bi-gear"></i>
+                    <span>Settings</span>
+                  </a>
+                </li>
+              </ul>
+              <button class="btn-logout" onclick="logout()">
+                <i class="bi bi-box-arrow-right"></i> Logout
+              </button>
+            </div>
+
+            <!-- Main Content -->
+            <div class="account-content">
+              <!-- Profile Section -->
+              <div class="content-section active" id="profileSection">
+                <h2 class="section-title">My Profile</h2>
+                <div class="profile-grid">
+                  <div class="info-item">
+                    <div class="info-label">Full Name</div>
+                    <div class="info-value" id="profileName">Loading...</div>
+                  </div>
+                  <div class="info-item">
+                    <div class="info-label">Email Address</div>
+                    <div class="info-value" id="profileEmail">Loading...</div>
+                  </div>
+                  <div class="info-item">
+                    <div class="info-label">Phone Number</div>
+                    <div class="info-value" id="profilePhone">Loading...</div>
+                  </div>
+                  <div class="info-item">
+                    <div class="info-label">Address</div>
+                    <div class="info-value" id="profileAddress">Loading...</div>
+                  </div>
+                  <div class="info-item">
+                    <div class="info-label">Member Since</div>
+                    <div class="info-value" id="profileCreated">Loading...</div>
+                  </div>
+                  <div class="info-item">
+                    <div class="info-label">Total Orders</div>
+                    <div class="info-value" id="profileOrders">0</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Orders Section -->
+              <div class="content-section" id="ordersSection">
+                <h2 class="section-title">Order History</h2>
+
+                <div class="orders-filter">
+                  <button class="filter-btn active" data-filter="all">
+                    All Orders
+                  </button>
+                  <button class="filter-btn" data-filter="completed">
+                    Completed
+                  </button>
+                  <button class="filter-btn" data-filter="processing">
+                    Processing
+                  </button>
+                  <button class="filter-btn" data-filter="pending">
+                    Pending
+                  </button>
+                  <button class="filter-btn" data-filter="cancelled">
+                    Cancelled
+                  </button>
+                </div>
+
+                <div id="ordersContainer">
+                  <!-- Orders will be loaded here -->
+                </div>
+              </div>
+
+              <!-- Settings Section -->
+              <div class="content-section" id="settingsSection">
+                <h2 class="section-title">Account Settings</h2>
+                <div class="empty-state">
+                  <i class="bi bi-gear"></i>
+                  <h3>Settings Coming Soon</h3>
+                  <p>
+                    We're working on adding more customization options for your
+                    account.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- footer section -->
+    <footer class="bg-dark text-white py-4">
+      <div class="container text-center">
+        <p class="mb-1">&copy; 2025 FunCake. All rights reserved.</p>
+        <div class="d-flex justify-content-center gap-3">
+          <a href="#" class="text-white text-decoration-none">Privacy Policy</a>
+          <a href="#" class="text-white text-decoration-none"
+            >Terms of Service</a
+          >
+          <a href="#" class="text-white text-decoration-none">Contact</a>
+        </div>
+      </div>
+    </footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      // Check if user is logged in -- commented out lang for now for demo purpose
+      //   if (localStorage.getItem("funcakeLoggedIn") !== "true") {
+      //     window.location.href = "login.html";
+      //   }
+
+      // Get user data
+      const userEmail = localStorage.getItem("funcakeUserEmail");
+      const userName = localStorage.getItem("funcakeUserName");
+      const users = JSON.parse(localStorage.getItem("funcakeUsers") || "{}");
+      const currentUser = users[userEmail];
+
+      // Update header
+      document.getElementById("userName").textContent =
+        userName || "Welcome Back!";
+      document.getElementById("userEmail").textContent = userEmail;
+
+      // Update profile
+      if (currentUser) {
+        document.getElementById("profileName").textContent = currentUser.name;
+        document.getElementById("profileEmail").textContent = userEmail;
+        document.getElementById("profilePhone").textContent =
+          currentUser.phone || "Not provided";
+        document.getElementById("profileAddress").textContent =
+          currentUser.address || "Not provided";
+
+        const createdDate = new Date(currentUser.createdAt);
+        document.getElementById("profileCreated").textContent =
+          createdDate.toLocaleDateString();
+      }
+
+      // Load orders
+      function loadOrders(filter = "all") {
+        const orders = JSON.parse(
+          localStorage.getItem("funcakeOrders") || "[]"
+        );
+        const userOrders = orders.filter((order) => order.email === userEmail);
+
+        document.getElementById("profileOrders").textContent =
+          userOrders.length;
+
+        const container = document.getElementById("ordersContainer");
+
+        if (userOrders.length === 0) {
+          container.innerHTML = `
+            <div class="empty-state">
+              <i class="bi bi-bag-x"></i>
+              <h3>No Orders Yet</h3>
+              <p>Start your FunCake journey by placing your first order!</p>
+              <a href="menu.html" class="btn-reorder" style="display: inline-block; text-decoration: none; margin-top: 20px;">
+                Browse Menu
+              </a>
+            </div>
+          `;
+          return;
+        }
+
+        let filteredOrders = userOrders;
+        if (filter !== "all") {
+          filteredOrders = userOrders.filter(
+            (order) => order.status === filter
+          );
+        }
+
+        if (filteredOrders.length === 0) {
+          container.innerHTML = `
+            <div class="empty-state">
+              <i class="bi bi-funnel"></i>
+              <h3>No ${filter} Orders</h3>
+              <p>You don't have any ${filter} orders at the moment.</p>
+            </div>
+          `;
+          return;
+        }
+
+        let html = "";
+        filteredOrders.reverse().forEach((order) => {
+          const orderDate = new Date(order.date);
+          const statusClass = `status-${order.status}`;
+
+          html += `
+            <div class="order-card">
+              <div class="order-header">
+                <div>
+                  <div class="order-id">Order #${order.id}</div>
+                  <div class="order-date">${orderDate.toLocaleDateString()} at ${orderDate.toLocaleTimeString()}</div>
+                </div>
+                <span class="order-status ${statusClass}">${order.status}</span>
+              </div>
+              <div class="order-items">
+          `;
+
+          for (const [itemName, itemData] of Object.entries(order.cart)) {
+            html += `
+              <div class="order-item">
+                <img src="${
+                  itemData.image
+                }" alt="${itemName}" class="order-item-image" />
+                <div class="order-item-details">
+                  <div class="order-item-name">${itemName}</div>
+                  <div class="order-item-qty">Quantity: ${
+                    itemData.quantity
+                  }</div>
+                </div>
+                <div class="order-item-price">₱${(
+                  itemData.price * itemData.quantity
+                ).toFixed(2)}</div>
+              </div>
+            `;
+          }
+
+          html += `
+              </div>
+              <div class="order-footer">
+                <div class="order-total">Total: ${order.total}</div>
+                <button class="btn-reorder" onclick="reorder('${order.id}')">
+                  <i class="bi bi-arrow-clockwise"></i> Reorder
+                </button>
+              </div>
+            </div>
+          `;
+        });
+
+        container.innerHTML = html;
+      }
+
+      // Reorder function
+      function reorder(orderId) {
+        const orders = JSON.parse(
+          localStorage.getItem("funcakeOrders") || "[]"
+        );
+        const order = orders.find((o) => o.id === orderId);
+
+        if (order) {
+          localStorage.setItem("funcakeCart", JSON.stringify(order.cart));
+          window.location.href = "checkout.html";
+        }
+      }
+
+      // Menu navigation
+      document.querySelectorAll(".menu-link").forEach((link) => {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          document
+            .querySelectorAll(".menu-link")
+            .forEach((l) => l.classList.remove("active"));
+          this.classList.add("active");
+
+          document
+            .querySelectorAll(".content-section")
+            .forEach((s) => s.classList.remove("active"));
+
+          const section = this.dataset.section;
+          document.getElementById(section + "Section").classList.add("active");
+
+          if (section === "orders") {
+            loadOrders();
+          }
+        });
+      });
+
+      // Filter buttons
+      document.querySelectorAll(".filter-btn").forEach((btn) => {
+        btn.addEventListener("click", function () {
+          document
+            .querySelectorAll(".filter-btn")
+            .forEach((b) => b.classList.remove("active"));
+          this.classList.add("active");
+          loadOrders(this.dataset.filter);
+        });
+      });
+
+      // Logout function
+      function logout() {
+        if (confirm("Are you sure you want to logout?")) {
+          localStorage.removeItem("funcakeLoggedIn");
+          localStorage.removeItem("funcakeUserEmail");
+          localStorage.removeItem("funcakeUserName");
+          window.location.href = "index.html";
+        }
+      }
+
+      // Update cart badge
+      function updateCartBadge() {
+        const cart = JSON.parse(localStorage.getItem("funcakeCart") || "{}");
+        const totalItems = Object.values(cart).reduce(
+          (sum, item) => sum + item.quantity,
+          0
+        );
+        const badge = document.getElementById("cartBadge");
+
+        if (totalItems > 0) {
+          badge.textContent = totalItems;
+          badge.style.display = "flex";
+        } else {
+          badge.style.display = "none";
+        }
+      }
+
+      // Initialize
+      loadOrders();
+      updateCartBadge();
+    </script>
+  </body>
+</html>
